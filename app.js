@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const validator = require('express-validator');
 
 const models = require('./db/models');
 models.sequelize.sync()
@@ -14,11 +15,19 @@ models.sequelize.sync()
 
 const app = express();
 app.use(cors());
+app.use(validator());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!\n');
+app.get('/search', (req, res) => {
+  req.checkQuery('name', 'Invalid Query').isLength({min: 2});
+
+  const err = req.validationErrors();
+  if (err) {
+    res.status(401).json(err);
+  } else {
+
+  }
 });
 
 process
@@ -31,6 +40,4 @@ process
     process.exit(1);
   });
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
-});
+module.exports = app;
