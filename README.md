@@ -4,5 +4,20 @@
 
 # To Start
 1. Configure your database & `config/config.json`  
-2. Migrate database with your data.
-3. Start Server. 
+2. Prepare your Seed data with `data.json`.
+3. Start Server.
+
+ex) Data Sample
+```json
+{"data": [
+  {
+    "id": "",
+    "name": "",
+    "addr": "",
+    "road_addr": "",
+    "x": "",
+    "y": ""
+  }
+]}
+```
+ 
