@@ -1,5 +1,5 @@
 'use strict';
-const seed = require('../data.json');
+const seed = require('../../data.json');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {

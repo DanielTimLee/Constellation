@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const models = require('./models');
+const models = require('./db/models');
 models.sequelize.sync()
   .then(() => {
     console.log('✓ DB connection success. Press CTRL-C to stop\n');
