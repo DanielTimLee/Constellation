@@ -4,12 +4,9 @@ const validator = require('express-validator');
 
 const models = require('./db/models');
 models.sequelize.sync()
-  .then(() => {
-    console.log('✓ DB connection success. Press CTRL-C to stop\n');
-  })
+  .then(() => console.log('✓ DB connection success. Press CTRL-C to stop\n'))
   .catch(err => {
-    console.error(err);
-    console.log('✗ DB connection error. Please make sure DB is running.');
+    console.log('✗ DB connection error. Please make sure DB is running.\n', err);
     process.exit();
   });
 
@@ -19,16 +16,9 @@ app.use(validator());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/search', (req, res) => {
-  req.checkQuery('name', 'Invalid Query').isLength({min: 2});
+const search = require('./routes/search');
+app.use('/search', search);
 
-  const err = req.validationErrors();
-  if (err) {
-    res.status(401).json(err);
-  } else {
-
-  }
-});
 
 process
   .on('unhandledRejection', (error) => {
