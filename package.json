@@ -8,6 +8,7 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "~4.16.0",
+    "mysql2": "^1.6.1",
     "sequelize": "^4.38.1"
   }
 }

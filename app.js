@@ -1,6 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 
+const models = require('./models');
+models.sequelize.sync()
+  .then(() => {
+    console.log('✓ DB connection success. Press CTRL-C to stop\n');
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('✗ DB connection error. Please make sure DB is running.');
+    process.exit();
+  });
+
 const app = express();
 app.use(cors());
 app.use(express.json());
