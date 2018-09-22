@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "init-db": "sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "dependencies": {
     "cors": "^2.8.4",
